@@ -27,6 +27,7 @@ function addAnotherEmployee() {
         }
         else {
             console.log("Done adding Employees!")
+            createHTML();
         }
     })
 }
@@ -162,13 +163,48 @@ function addManager() {
 }
 
 function createHTML(){
+    console.log("We are now creating your team's HTML...")
     let cardsHTML = "";
     teamArray.forEach(employee =>{
         let teamCards = employee.generateCard();
         cardsHTML += teamCards;
     });
 
+    let teamHTML = `
+    <!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Links -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/4b155f78bb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="" style="width: 100vw; padding: 30px 0; background: red; text-align: center;">
+        <h1 style="color: white;">My Team</h1>
+    </div>
+    <div class="container card-deck row row-cols-1 row-cols-md-3" style="margin-top: 50px; margin-right: auto; margin-left: auto;">
+        ${cardsHTML}
+    </div>
+</body>
+
+</html>
+    `
+
+    fs.writeFile("./output/myteam.html", teamHTML, function(err) {
+        if (err) {
+           return console.log(err);
+        }
+        console.log("myteam.html was created!")
+     });
 }
 
 startApp();
