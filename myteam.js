@@ -58,7 +58,7 @@ function addEngineer() {
         let engineer = new Engineer(engineerName, id, engineerEmail, engineerGitHub);
 
         teamArray.push(engineer);
-        console.log(teamArray);
+    
 
         addAnotherEmployee();
     })
@@ -90,7 +90,7 @@ function addIntern() {
         let intern = new Intern(internName, id, internEmail, internSchool);
 
         teamArray.push(intern);
-        console.log(teamArray);
+    
 
         addAnotherEmployee();
     })
@@ -142,7 +142,7 @@ function addManager() {
 
         teamArray.push(manager);
 
-        console.log(teamArray);
+    
     }).then(() => {
         inquirer.prompt([
             {
